@@ -107,7 +107,10 @@ customer popularity and feedback.
 
 Follow the notebooks to run the project after downloading the dataset and project from GitHub
 
-### Install Required Libraries
+1️⃣ Clone the Repository
+git clone https://github.com/Anupama050802/AnupamaMK_ict_internship.git
+
+2️⃣ Install Required Libraries
 
 Install the necessary Python libraries if required:
 
@@ -119,5 +122,6 @@ pip install matplotlib
 pip install seaborn
 pip install scikit-learn
 ```
+3️⃣ Run the Notebooks
 
 ###
