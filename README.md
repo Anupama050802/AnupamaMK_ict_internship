@@ -18,6 +18,7 @@ Key tasks performed in this project:
 - Stored data into CSV format
 - Performed basic data cleaning
 - Conducted exploratory data analysis (EDA)
+- Added more data which helped increase the model performance
 
 ### Week 2 — Data Cleaning & Preprocessing
 
@@ -29,7 +30,38 @@ Key tasks performed in this project:
   - Standardization of numerical features
   - One-hot encoding of categorical variables
   - Binary feature passthrough
+  - Ordinal encoding of columns with order
 - Saved machine-learning-ready dataset
+
+### Week 3 — Model Building, Evaluation & Optimization
+
+Model Development
+
+Built and compared multiple models using **pipeline**:
+
+- Logistic Regression
+- K-Nearest Neighbors (KNN)
+- Support Vector Classifier (SVC)
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- XGBoost (Best performing model)
+
+Hyperparameter Tuning
+
+Applied RandomizedSearchCV for optimization with tuned parameters and identified best-performing configuration for XGBoost
+
+Model Evaluation
+
+Models were evaluated using:Accuracy,Precision,Recall,F1-score,ROC-AUC
+
+Key Results
+
+XGBoost achieved the best classification performance
+- Accuracy ≈ 93%
+- Precision ≈ 94%
+- Recall ≈ 98%
+- F1-score ≈ 0.96
 
 ---
 
@@ -39,15 +71,15 @@ The dataset contains restaurant-level information collected from Swiggy listings
 
 ### Dataset Files
 
-- swiggy_raw_dataset.csv
-- swiggy_clean_dataset.csv
+UPDATED
+- swiggy_raw_dataset_final.csv
+- swiggy_clean_dataset_final.csv
 
 
 ### Features Included
 
 | Column Name | Description |
 |-------------|-------------|
-| restaurant_id | Unique identifier for each restaurant |
 | name | Restaurant name |
 | link | Restaurant menu link |
 | city | City where the restaurant is located |
@@ -59,7 +91,7 @@ The dataset contains restaurant-level information collected from Swiggy listings
 | has_table_booking | Table booking availability (0 for delivery restaurants) |
 | price_for_two | Cost for two people |
 | cuisine_count | Number of cuisines offered by the restaurant |
-| success | Derived feature indicating restaurant success based on rating and votes thresholds |
+| success | Derived feature indicating restaurant success based on rating thresholds |
 | votes_log | Log-transformed votes |
 | price_bucket | Price category (Low, Medium, High, Luxury) |
 | city_tier | Tier classification of city |
@@ -72,13 +104,19 @@ The dataset contains restaurant-level information collected from Swiggy listings
 - Restaurants fetched using latitude and longitude coordinates
 - Pagination handled using offset values
 - Duplicate restaurants may occur across nearby areas
-- Duplicate records can be identified using `restaurant_id`
+- Duplicate records can be identified using restaurant_id,restaurants whose name,city and area is same are removed
 - Basic data cleaning performed on rating, votes, and price fields
 - Missing values handled during cleaning
 - Outliers handled and log transformation applied where necessary
 - Feature engineering applied to improve model performance
 - Dataset transformed using preprocessing pipeline
 - Dataset exploratory data analysis, preprocessing will prepare for modeling
+- Feature engineering improved model performance
+- Machine learning models built and evaluated using multiple algorithms in pipeline with confusion metric
+- Hyperparameter tuning applied to optimize model performance
+- Evaluation using multiple metrics (Accuracy, Precision, Recall, F1-score, ROC-AUC) to assess performance comprehensively
+- Feature Importance analysis helped understand the how and which are the features that are most important and influenced the most in success prediction.
+- Generated pickle file for deployment
 
 ---
 
@@ -87,12 +125,11 @@ The dataset contains restaurant-level information collected from Swiggy listings
 A restaurant is considered **successful** based on customer engagement
 and satisfaction indicators available in the dataset.
 
-The **success** column is created using the following conditions:
+The **success** (target) column is created using the following conditions:
 
-- Restaurant rating ≥ 4.0  
-- Number of votes ≥ 1000  
+- Restaurant rating ≥ 4.1   
 
-If both conditions are satisfied:
+If the condition is satisfied:
 
 success = 1 (Successful Restaurant)
 
@@ -115,14 +152,13 @@ git clone https://github.com/Anupama050802/AnupamaMK_ict_internship.git
 
 Install the necessary Python libraries if required:
 
-```bash
 pip install requests
 pip install pandas
 pip install numpy
 pip install matplotlib
 pip install seaborn
 pip install scikit-learn
-```
+
 3️⃣ Run the Notebooks
 
 ###
