@@ -77,7 +77,7 @@ The trained model is deployed using **Flask web framework** and hosted on **Rend
 
 The system is enhanced with **Google Gemini (Generative AI)** to provide business improvement suggestions.
 
----
+
 
 # 🌐 Flask Web Application
 
@@ -210,7 +210,7 @@ The dataset contains restaurant-level information collected from Swiggy listings
 
 ### Dataset Files
 
-UPDATED
+#### UPDATED
 - swiggy_raw_dataset_final.csv
 - swiggy_clean_dataset_final.csv
 
