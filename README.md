@@ -101,7 +101,6 @@ The system is enhanced with **Google Gemini (Generative AI)** to provide busines
 - Displays prediction result in real-time
 - Sends data to Gemini AI for suggestions
 
----
 
 ## 🔹 Frontend
 
