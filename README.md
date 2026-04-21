@@ -72,7 +72,6 @@ XGBoost achieved the best classification performance
 
 # Week 4 — Flask App + GenAI Deployment
 
----
 
 The trained model is deployed using **Flask web framework** and hosted on **Render Cloud Platform**.
 
