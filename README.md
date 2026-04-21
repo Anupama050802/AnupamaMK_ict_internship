@@ -1,15 +1,16 @@
-# 🍽️ **Swiggy Restaurant Data Collection and Analysis for Restaurant Success Prediction**
+# 🍽️ Swiggy Restaurant Data Collection and Restaurant Success Prediction System
 
-## 📌 Project Overview
+---
 
-This project focuses on collecting restaurant data from **Swiggy** using location-based API requests.  
-Restaurant data is gathered from multiple cities and areas using latitude and longitude coordinates.
+# 📌 Project Overview
 
-The collected data is stored in a structured format and used for data cleaning, exploratory data analysis (EDA), preprocessing and machine learning tasks such as restaurant performance and hence success prediction.
+This project focuses on **data collection, analysis, machine learning model building, and GenAI-powered web deployment** for predicting restaurant success.
 
-Key tasks performed in this project:
+The system uses Swiggy restaurant data collected from multiple cities using location-based API requests (latitude & longitude). The collected data is cleaned, analyzed, and used to build a machine learning model which is then deployed as a **Flask web application integrated with Google Gemini AI**.
 
-### Week 1 — Data Collection
+---
+
+# Week 1 — Data Collection
 
 - Collected restaurant data using Swiggy API
 - Used latitude and longitude for location-based scraping
@@ -20,7 +21,9 @@ Key tasks performed in this project:
 - Conducted exploratory data analysis (EDA)
 - Added more data which helped increase the model performance
 
-### Week 2 — Data Cleaning & Preprocessing
+---
+
+# Week 2 — Data Cleaning & Preprocessing
 
 - Removed duplicate restaurants using `restaurant_id`
 - Cleaned rating, votes, and price columns
@@ -32,8 +35,9 @@ Key tasks performed in this project:
   - Binary feature passthrough
   - Ordinal encoding of columns with order
 - Saved machine-learning-ready dataset
+---
 
-### Week 3 — Model Building, Evaluation & Optimization
+# Week 3 — Model Building, Evaluation & Optimization
 
 Model Development
 
@@ -63,6 +67,142 @@ XGBoost achieved the best classification performance
 - Recall ≈ 98%
 - F1-score ≈ 0.96
 
+
+---
+
+# Week 4 — Flask App + GenAI Deployment
+
+---
+
+The trained model is deployed using **Flask web framework** and hosted on **Render Cloud Platform**.
+
+The system is enhanced with **Google Gemini (Generative AI)** to provide business improvement suggestions.
+
+---
+
+# 🌐 Flask Web Application
+
+## 🔹 Features
+
+- Takes restaurant input from user:
+  - City
+  - Area
+  - Cuisine
+  - Price for two
+  - Online delivery availability
+  - Votes
+
+- Performs feature engineering:
+  - City tier classification
+  - Cuisine encoding
+  - Price bucket creation
+  - Log transformation of votes
+
+- Predicts restaurant success using ML model
+- Displays prediction result in real-time
+- Sends data to Gemini AI for suggestions
+
+---
+
+## 🔹 Frontend
+
+- Simple HTML form-based UI
+- Clean and responsive design
+- Displays:
+  - Prediction result
+  - AI suggestions
+  - GenAI prompt used
+
+---
+
+# 🧠 GenAI Prompt Design (Google Gemini)
+
+```text
+You are an expert restaurant business consultant.
+
+Restaurant Details:
+
+Prediction Result: {result}
+Price Category: {price_bucket}
+Votes Received: {votes}
+Online Delivery: {has_online_delivery}
+Restaurant Density: {restaurant_density}
+Number of Cuisines: {cuisine_count}
+
+Task:
+Suggest exactly 4 short business improvements.
+
+Rules:
+- Format each suggestion exactly like this:
+  * Action: [10 words max]
+  Reason: [10 words max]
+- Ensure there is a NEW LINE between Action and Reason.
+- Use clear business language
+- Use only ONE bullet (*) per improvement
+- Avoid long explanations
+
+```
+
+### Example 1
+### City-Bangalore,Area- Jayanagar
+
+🧠 GenAI Prompt Used:
+
+        
+You are an expert restaurant business consultant.
+
+Restaurant Details:
+
+Prediction Result: Successful Restaurant
+Price Category: Medium
+Votes Received: 5000.0
+Online Delivery: 1
+Restaurant Density: High
+Number of Cuisines: 6
+
+Task:
+Suggest exactly 4 short business improvements.
+
+Rules:
+- Format each suggestion exactly like this:
+  * Action: [10 words max]
+  Reason: [10 words max]
+- Ensure there is a NEW LINE between Action and Reason.
+- Use clear business language
+- Use only ONE bullet (*) per improvement
+- Avoid long explanations
+
+### Example 2
+### City-Kochi,Area-MG Road
+
+🧠 GenAI Prompt Used:
+
+
+        
+You are an expert restaurant business consultant.
+
+Restaurant Details:
+
+Prediction Result: Not Successful
+Price Category: Medium
+Votes Received: 200.0
+Online Delivery: 1
+Restaurant Density: Low
+Number of Cuisines: 4
+
+Task:
+Suggest exactly 4 short business improvements.
+
+Rules:
+- Format each suggestion exactly like this:
+  * Action: [10 words max]
+  Reason: [10 words max]
+- Ensure there is a NEW LINE between Action and Reason.
+- Use clear business language
+- Use only ONE bullet (*) per improvement
+- Avoid long explanations
+
+### Refer the sample screenshots of app in the sample_outputs folder
 ---
 
 ## 📊 Dataset Description
@@ -71,7 +211,7 @@ The dataset contains restaurant-level information collected from Swiggy listings
 
 ### Dataset Files
 
-#### UPDATED
+UPDATED
 - swiggy_raw_dataset_final.csv
 - swiggy_clean_dataset_final.csv
 
@@ -101,7 +241,6 @@ The dataset contains restaurant-level information collected from Swiggy listings
 ### Characteristics
 
 - Data collected from multiple cities and areas
-- Restaurants fetched using latitude and longitude coordinates
 - Pagination handled using offset values
 - Duplicate restaurants may occur across nearby areas
 - Duplicate records can be identified using restaurant_id,restaurants whose name,city and area is same are removed
@@ -111,12 +250,17 @@ The dataset contains restaurant-level information collected from Swiggy listings
 - Feature engineering applied to improve model performance
 - Dataset transformed using preprocessing pipeline
 - Dataset exploratory data analysis, preprocessing will prepare for modeling
-- Feature engineering improved model performance
 - Machine learning models built and evaluated using multiple algorithms in pipeline with confusion metric
 - Hyperparameter tuning applied to optimize model performance
 - Evaluation using multiple metrics (Accuracy, Precision, Recall, F1-score, ROC-AUC) to assess performance comprehensively
 - Feature Importance analysis helped understand the how and which are the features that are most important and influenced the most in success prediction.
-- Generated pickle file for deployment
+- Generated pickle file of xgboost model pipeline and area counts for flask app
+- Flask web application developed for real-time restaurant success prediction
+- User inputs processed and converted into model-ready features
+- Google Gemini (GenAI) integrated for generating business improvement suggestions
+- Custom prompt designed to produce structured AI recommendations
+- Full-stack deployment completed using Flask backend and HTML frontend
+- Application deployed on Render cloud platform for live access
 
 ---
 
@@ -125,7 +269,7 @@ The dataset contains restaurant-level information collected from Swiggy listings
 A restaurant is considered **successful** based on customer engagement
 and satisfaction indicators available in the dataset.
 
-The **success** (target) column is created using the following conditions:
+The **success** (target)column is created using the following conditions:
 
 - Restaurant rating ≥ 4.1   
 
@@ -160,5 +304,16 @@ pip install seaborn
 pip install scikit-learn
 
 3️⃣ Run the Notebooks
+
+4️⃣ Run Flask App
+
+python app.py
+
+Deployment (Render)
+
+🔗 Live Link
+
+https://restaurant-success-prediction-app.onrender.com/
+
 
 ###
